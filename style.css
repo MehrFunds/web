@@ -1,0 +1,227 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+
+:root {
+  --bg:        #07100a;
+  --surface:   #0d1c10;
+  --surface2:  #152b19;
+  --border:    #1e3a24;
+  --text:      #ecf7ed;
+  --muted:     #7aa090;
+  --accent:    #4ade80;
+  --accent-h:  #86efac;
+  --accent-dim: #22c55e;
+  --r:         8px;
+  --font:      -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --mono:      'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --max-w:     1120px;
+}
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+
+
+/* ─── Nav ───────────────────────────────────────────────────────────────── */
+
+#nav {
+  border-bottom: 1px solid var(--border);
+  background: rgba(7, 16, 10, 0.88);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0.9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordmark       { font-size: 1.2rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.03em }
+.wordmark b     { color: var(--accent) }
+.wordmark.small { font-size: 0.9rem }
+
+.nav-end  { display: flex; align-items: center; gap: 1.5rem }
+.nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.12s }
+.nav-link:hover { color: var(--text) }
+
+
+/* ─── Buttons ───────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none;
+  border-radius: var(--r);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+.btn.primary       { background: var(--accent);  color: #07100a }
+.btn.primary:hover { background: var(--accent-h) }
+.btn.ghost         { background: transparent; color: var(--text); border: 1px solid var(--border) }
+.btn.ghost:hover   { background: var(--surface2); border-color: var(--accent-dim) }
+.btn.small         { padding: 0.35rem 0.75rem; font-size: 0.8rem }
+.btn.large         { padding: 0.75rem 1.75rem; font-size: 1rem }
+
+
+/* ─── Main layout ───────────────────────────────────────────────────────── */
+
+main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  padding: 7rem 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.07;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+
+/* ─── Section label ─────────────────────────────────────────────────────── */
+
+.section-label {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1.5rem;
+}
+
+
+/* ─── Pillars ───────────────────────────────────────────────────────────── */
+
+.pillars { margin-bottom: 5rem }
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+.pillar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 2px);
+  padding: 1.75rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.pillar:hover   { border-color: var(--accent-dim); background: var(--surface2) }
+.pillar-icon    { font-size: 1.4rem; margin-bottom: 0.9rem; color: var(--accent-dim) }
+.pillar h3      { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem }
+.pillar p       { font-size: 0.875rem; color: var(--muted); line-height: 1.65 }
+
+
+/* ─── Network table ─────────────────────────────────────────────────────── */
+
+.network-section { margin-bottom: 5rem }
+
+.zone-table { border: 1px solid var(--border); border-radius: calc(var(--r) + 2px); overflow: hidden }
+
+.zone-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+.zone-row:last-child { border-bottom: none }
+.zone-row.head {
+  background: var(--surface);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.zone-name   { font-family: var(--mono); font-size: 0.82rem }
+.zone-type   { color: var(--muted); font-size: 0.82rem }
+.zone-region { color: var(--muted); font-size: 0.82rem; font-family: var(--mono) }
+
+
+/* ─── CTA ───────────────────────────────────────────────────────────────── */
+
+.cta-section {
+  text-align: center;
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--r) * 2);
+  background: var(--surface);
+  margin-bottom: 5rem;
+}
+.cta-section h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em }
+.cta-section p  { font-size: 1rem; color: var(--muted) }
+
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+
+.footer { border-top: 1px solid var(--border); padding: 2rem 0 }
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.footer-note  { font-size: 0.8rem; color: var(--muted); flex: 1 }
+.footer-links { display: flex; gap: 1.25rem }
+.footer-link  { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.12s }
+.footer-link:hover { color: var(--text) }
+
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .nav-inner  { padding: 0.875rem 1rem }
+  main        { padding: 0 1rem 4rem }
+  .hero       { padding: 4rem 0 3rem }
+  .zone-row   { grid-template-columns: 1fr 90px 90px }
+  .footer-inner { flex-wrap: wrap; gap: 1rem }
+}
